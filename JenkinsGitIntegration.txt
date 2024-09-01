@@ -68,9 +68,6 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Pipeline finished.'
-        }
         success {
             emailext (
                 subject: "Jenkins Pipeline: SUCCESS",
@@ -87,6 +84,8 @@ pipeline {
                 attachLog: true
             )
         }
+        always {
+            echo 'Pipeline finished.'
+        }
     }
 }
-
