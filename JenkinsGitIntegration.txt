@@ -19,6 +19,20 @@ pipeline {
                     echo 'Tools: JUnit for unit testing, Selenium or TestNG for integration testing'
                 }
             }
+            post {
+                success {
+                    mail to: "muchaipaula@gmail.com",
+                         subject: "Unit and Integration Tests: SUCCESS",
+                         body: "The Unit and Integration Tests stage has completed successfully.",
+                         attachLog: true
+                }
+                failure {
+                    mail to: "muchaipaula@gmail.com",
+                         subject: "Unit and Integration Tests: FAILURE",
+                         body: "The Unit and Integration Tests stage has failed. Please check the logs.",
+                         attachLog: true
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
@@ -35,6 +49,20 @@ pipeline {
                     echo 'Stage 4: Security Scan'
                     echo 'Task: Perform a security scan to identify vulnerabilities.'
                     echo 'Tool: OWASP Dependency-Check or Snyk for security scanning'
+                }
+            }
+            post {
+                success {
+                    mail to: "muchaipaula@gmail.com",
+                         subject: "Security Scan: SUCCESS",
+                         body: "The Security Scan stage has completed successfully.",
+                         attachLog: true
+                }
+                failure {
+                    mail to: "muchaipaula@gmail.com",
+                         subject: "Security Scan: FAILURE",
+                         body: "The Security Scan stage has failed. Please check the logs.",
+                         attachLog: true
                 }
             }
         }
