@@ -21,16 +21,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "muchaipaula@gmail.com",
-                         subject: "Unit and Integration Tests: SUCCESS",
-                         body: "The Unit and Integration Tests stage has completed successfully.",
-                         attachLog: true
+                    emailext to: "muchaipaula@gmail.com",
+                             subject: "Unit and Integration Tests: SUCCESS",
+                             body: "The Unit and Integration Tests stage has completed successfully.",
+                             attachLog: true
                 }
                 failure {
-                    mail to: "muchaipaula@gmail.com",
-                         subject: "Unit and Integration Tests: FAILURE",
-                         body: "The Unit and Integration Tests stage has failed. Please check the logs.",
-                         attachLog: true
+                    emailext to: "muchaipaula@gmail.com",
+                             subject: "Unit and Integration Tests: FAILURE",
+                             body: "The Unit and Integration Tests stage has failed. Please check the logs.",
+                             attachLog: true
                 }
             }
         }
@@ -53,16 +53,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "muchaipaula@gmail.com",
-                         subject: "Security Scan: SUCCESS",
-                         body: "The Security Scan stage has completed successfully.",
-                         attachLog: true
+                    emailext to: "muchaipaula@gmail.com",
+                             subject: "Security Scan: SUCCESS",
+                             body: "The Security Scan stage has completed successfully.",
+                             attachLog: true
                 }
                 failure {
-                    mail to: "muchaipaula@gmail.com",
-                         subject: "Security Scan: FAILURE",
-                         body: "The Security Scan stage has failed. Please check the logs.",
-                         attachLog: true
+                    emailext to: "muchaipaula@gmail.com",
+                             subject: "Security Scan: FAILURE",
+                             body: "The Security Scan stage has failed. Please check the logs.",
+                             attachLog: true
                 }
             }
         }
@@ -97,14 +97,15 @@ pipeline {
 
     post {
         success {
-            mail to: "muchaipaula@gmail.com",
-                 subject: "Jenkins Pipeline: SUCCESS",
-                 body: "The Jenkins pipeline has completed successfully."
+            emailext to: "muchaipaula@gmail.com",
+                     subject: "Jenkins Pipeline: SUCCESS",
+                     body: "The Jenkins pipeline has completed successfully."
         }
         failure {
-            mail to: "muchaipaula@gmail.com",
-                 subject: "Jenkins Pipeline: FAILURE",
-                 body: "The Jenkins pipeline has failed. Please check the logs."
+            emailext to: "muchaipaula@gmail.com",
+                     subject: "Jenkins Pipeline: FAILURE",
+                     body: "The Jenkins pipeline has failed. Please check the logs.",
+                     attachLog: true
         }
         always {
             echo 'Pipeline finished.'
