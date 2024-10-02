@@ -13,9 +13,21 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Running Unit and Integration Tests...'
+                sh 'echo "Running Unit and Integration Tests..." > testfile.txt'
                 // Tool: JUnit, TestNG
                 // sh 'mvn test'
             }
+            post {
+                always {
+                emailext(
+                subject: "INTERGRATION TESTS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: "The build was successful. Check details at: ${env.BUILD_URL}",
+                to: 'muchaipaula@gmail.com',
+                attachmentsPattern: 'testfile.txt'
+            )   
+                }
+            }   
+
         }
 
         stage('Code Analysis') {
