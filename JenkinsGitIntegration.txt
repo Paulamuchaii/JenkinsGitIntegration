@@ -41,7 +41,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Performing Security Scan...'
-                sh 'echo "Performing Security Scan..." > securityscan.txt
+                sh 'echo "Performing Security Scan..." > securityscan.txt'
                 // Tool: OWASP ZAP, Snyk
                 // sh 'zap-cli scan https://your-app-url'
             }
